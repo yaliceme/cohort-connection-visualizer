@@ -13,5 +13,8 @@ Meteor.methods({
   },
   "addConnection": function (personId, partnerId) {
     Nodes.update({id: personId}, {$addToSet: {partnerIds: partnerId}});
+  },
+  "removeConnection": function (personId, partnerId) {
+    Nodes.update({id: personId}, {$pull: {partnerIds: partnerId}});
   }
 });
