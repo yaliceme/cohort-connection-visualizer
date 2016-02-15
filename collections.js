@@ -1,20 +1,16 @@
 Nodes = new Mongo.Collection("Nodes");
 
-// personId is a number
-// partnerId is a number
-// parternerIds is an array of numbers
-
 Meteor.methods({
-  "addNode": function (personId, partnerIds) {
-    return Nodes.insert({id: personId, partnerIds: partnerIds});
+  "addNode": function (name, partnerNames) {
+    return Nodes.insert({name: name, partnerNames: partnerNames});
   },
-  "removeNode": function (personId) {
-    Nodes.remove({id: personId});
+  "removeNode": function (name) {
+    Nodes.remove({name: name});
   },
-  "addConnection": function (personId, partnerId) {
-    Nodes.update({id: personId}, {$addToSet: {partnerIds: partnerId}});
+  "addConnection": function (name, partnerName) {
+    Nodes.update({name: name}, {$addToSet: {partnerNames: partnerName}});
   },
-  "removeConnection": function (personId, partnerId) {
-    Nodes.update({id: personId}, {$pull: {partnerIds: partnerId}});
+  "removeConnection": function (name, partnerName) {
+    Nodes.update({name: name}, {$pull: {partnerNames: partnerName}});
   }
 });
