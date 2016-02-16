@@ -6,6 +6,7 @@ Graph = React.createClass({
               .attr("width", this.props.width)
               .attr("height", this.props.height)
               .style("background-color", "teal")
+    // console.log("this.props:", this.props);
     this.updateGraph(this.props);
   },
 
@@ -22,12 +23,16 @@ Graph = React.createClass({
 
   render: function () {
     return (
-      <div className="graph">
-      </div>
+      <div className="graph"></div>
     );
   },
 
   updateGraph: function (props) {
+    var color = d3.scale.category20();
+    var force = d3.layout.force()
+                .charge(-120)
+                .linkDistance(30)
+                .size([props.width, props.height]);
 
   }
 });
