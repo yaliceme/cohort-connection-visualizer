@@ -27,6 +27,7 @@ App = React.createClass({
         <div className="row">
           <div className="col-md-4">
             <MeSelector changeSelf={this.changeSelf}/>
+            <PartnerChecklist me={this.state.self}/>
           </div>
           <div className="col-md-offset-2 col-md-6">
           </div>
