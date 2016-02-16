@@ -1,7 +1,7 @@
 PartnerChecklist = React.createClass({
   handleChange: function (event) {
-    Meteor.call("addConnection", this.props.me, event.target.value);
     Meteor.call("addNode", event.target.value);
+    Meteor.call("addLink", this.props.me, event.target.value);
   },
   render: function () {
     return (
