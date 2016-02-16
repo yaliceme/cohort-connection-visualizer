@@ -23,10 +23,8 @@ App = React.createClass({
             <h1>
               <i className="fa fa-beer"></i> Connection <small> Visualizer</small>
             </h1>
-            <h3>
-              Hovering over: {this.state.highlighted}
-            </h3>
           </center>
+          <HoverLabel highlighted={this.state.highlighted}/>
       </div>
       <div className="container">
         <div className="row">
