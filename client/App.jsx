@@ -1,8 +1,7 @@
 App = React.createClass({
   getInitialState () {
     return {
-      self: null,
-      highlighted: ""
+      self: null
     };
   },
 
@@ -24,7 +23,6 @@ App = React.createClass({
               <i className="fa fa-beer"></i> Connection <small> Visualizer</small>
             </h1>
           </center>
-          <HoverLabel highlighted={this.state.highlighted}/>
       </div>
       <div className="container">
         <div className="row">
@@ -43,9 +41,5 @@ App = React.createClass({
 
   changeSelf (name) {
     this.setState({self: name});
-  },
-
-  changeHighlighted (name) {
-    this.setState({highlighted: name});
   }
 });

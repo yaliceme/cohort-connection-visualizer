@@ -39,6 +39,11 @@ Graph = React.createClass({
 
     var svg = d3.select("svg");
 
+    var div = d3.select(this.getDOMNode())
+              .append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0);
+
     var links = svg.selectAll('.link').data(props.data.links);
 
     links.enter()
@@ -58,18 +63,21 @@ Graph = React.createClass({
             var colorNumber = (d.nodeIndex)%20;
             return color(colorNumber);
           })
-          // .attr('data-toggle', 'tooltip')
-          // .attr('title', function (d) {
-          //   return d.name;
-          // })
           .on('mouseenter', function (d) {
             console.log('mouse entered node of:', d.name);
-            props.changeHighlighted(d.name);
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div.html(d.name)
+                .style("left", (d3.mouse(this)[0] - 10) + "px")
+                .style("top", (d3.mouse(this)[1] - 14) + "px")
 
           })
           .on('mouseleave', function (d) {
             console.log('mouse left node of:', d.name);
-            props.changeHighlighted("");
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
           })
           .call(force.drag);
 
