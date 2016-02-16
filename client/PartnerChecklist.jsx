@@ -1,6 +1,7 @@
 PartnerChecklist = React.createClass({
   handleChange: function (event) {
     Meteor.call("addConnection", this.props.me, event.target.value);
+    Meteor.call("addNode", event.target.value);
   },
   render: function () {
     return (
@@ -23,3 +24,4 @@ PartnerChecklist = React.createClass({
 });
 
 //TODO: make it so that unchecking a box removes that connection. Right now a change event fires regardless of whether it was checking or unchecking, can't distinguish which one it was.
+//TODO: make it so that connection adding is mutual
