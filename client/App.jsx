@@ -30,6 +30,7 @@ App = React.createClass({
             <PartnerChecklist me={this.state.self}/>
           </div>
           <div className="col-md-offset-2 col-md-6">
+            <Graph data={this.data.nodes} width="480" height="320"/>
           </div>
         </div>
       </div>
