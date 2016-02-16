@@ -37,43 +37,50 @@ Graph = React.createClass({
 
     var svg = d3.select("svg");
 
-    var link = svg.selectAll('.link')
-                .data(props.data.links)
-                .enter().append('line')
-                .attr('class', 'link');
+    var links = svg.selectAll('.link').data(props.data.links);
 
-    var node = svg.selectAll('.node')
-                .data(props.data.nodes)
-                .enter().append('circle')
-                .attr('class', 'node')
-                .attr('r', 7)
-                .style('fill', function (d) {
-                  var colorNumber = d.nodeIndex%20;
-                  return color(colorNumber);
-                })
-                // .attr('data-toggle', 'tooltip')
-                // .attr('title', function (d) {
-                //   return d.name;
-                // })
-                .on('mouseenter', function (d) {
-                  console.log('mouse entered node of:', d.name);
-                  props.changeHighlighted(d.name);
+    links.enter()
+          .append('line')
+          .attr('class', 'link')
 
-                })
-                .on('mouseleave', function (d) {
-                  console.log('mouse left node of:', d.name);
-                  props.changeHighlighted("");
-                })
-                .call(force.drag);
-    // $('.node').tooltip();
+    links.exit()
+          .remove();
+
+    var nodes = svg.selectAll('.node').data(props.data.nodes);
+
+    nodes.enter()
+          .append('circle')
+          .attr('class', 'node')
+          .attr('r', 7)
+          .style('fill', function (d) {
+            var colorNumber = d.nodeIndex%20;
+            return color(colorNumber);
+          })
+          // .attr('data-toggle', 'tooltip')
+          // .attr('title', function (d) {
+          //   return d.name;
+          // })
+          .on('mouseenter', function (d) {
+            console.log('mouse entered node of:', d.name);
+            props.changeHighlighted(d.name);
+
+          })
+          .on('mouseleave', function (d) {
+            console.log('mouse left node of:', d.name);
+            props.changeHighlighted("");
+          })
+          .call(force.drag);
+
+    nodes.exit()
+          .remove();
 
     force.on("tick", function(){
-      link.attr("x1", function(d) { return d.source.x; })
+      links.attr("x1", function(d) { return d.source.x; })
           .attr("y1", function(d) { return d.source.y; })
           .attr("x2", function(d) { return d.target.x; })
           .attr("y2", function(d) { return d.target.y; });
 
-      node.attr("cx", function(d) { return d.x; })
+      nodes.attr("cx", function(d) { return d.x; })
           .attr("cy", function(d) { return d.y; });
     });
 
