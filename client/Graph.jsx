@@ -26,8 +26,10 @@ Graph = React.createClass({
     );
   },
 
+  color: d3.scale.category20(),
+
   updateGraph: function (props) {
-    var color = d3.scale.category20();
+    var color = this.color;
     var force = d3.layout.force()
                 .charge(-120)
                 .linkDistance(80)
@@ -53,7 +55,7 @@ Graph = React.createClass({
           .attr('class', 'node')
           .attr('r', 7)
           .style('fill', function (d) {
-            var colorNumber = d.nodeIndex%20;
+            var colorNumber = (d.nodeIndex)%20;
             return color(colorNumber);
           })
           // .attr('data-toggle', 'tooltip')
