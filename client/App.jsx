@@ -1,7 +1,8 @@
 App = React.createClass({
   getInitialState () {
     return {
-      self: null
+      self: null,
+      highlighted: "cow"
     };
   },
 
@@ -22,6 +23,9 @@ App = React.createClass({
             <h1>
             <i className="fa fa-beer"></i> Connection <small> Visualizer</small>
             </h1>
+            <h3>
+            Selected: {this.state.highlighted}
+            </h3>
           </center>
       </div>
       <div className="container">
@@ -31,7 +35,7 @@ App = React.createClass({
             <PartnerChecklist me={this.state.self}/>
           </div>
           <div className="col-md-7">
-            <Graph data={this.data} width={720} height={540}/>
+            <Graph data={this.data} width={720} height={540} changeHighlighted={this.changeHighlighted}/>
           </div>
         </div>
       </div>
@@ -41,5 +45,9 @@ App = React.createClass({
 
   changeSelf (name) {
     this.setState({self: name});
+  },
+
+  changeHighlighted (name) {
+    this.setState({highlighted: name});
   }
 });

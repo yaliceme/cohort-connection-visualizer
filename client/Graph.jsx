@@ -51,7 +51,21 @@ Graph = React.createClass({
                   var colorNumber = d.nodeIndex%20;
                   return color(colorNumber);
                 })
+                // .attr('data-toggle', 'tooltip')
+                // .attr('title', function (d) {
+                //   return d.name;
+                // })
+                .on('mouseenter', function (d) {
+                  console.log('mouse entered node of:', d.name);
+                  console.log('this:', this);
+                  this.innerHTML = d.name;
+                })
+                .on('mouseleave', function (d) {
+                  console.log('mouse left node of:', d.name);
+                  this.innerHTML = "";
+                })
                 .call(force.drag);
+    $('.node').tooltip();
 
     force.on("tick", function(){
       link.attr("x1", function(d) { return d.source.x; })
