@@ -30,7 +30,7 @@ Graph = React.createClass({
     var color = d3.scale.category20();
     var force = d3.layout.force()
                 .charge(-120)
-                .linkDistance(30)
+                .linkDistance(80)
                 .size([props.width, props.height])
                 .nodes(props.data.nodes)
                 .links(props.data.links);
@@ -45,7 +45,13 @@ Graph = React.createClass({
     var node = svg.selectAll('.node')
                 .data(props.data.nodes)
                 .enter().append('circle')
-                .attr('class', 'node');
+                .attr('class', 'node')
+                .attr('r', 7)
+                .style('fill', function (d) {
+                  var colorNumber = d.nodeIndex%20;
+                  return color(colorNumber);
+                })
+                .call(force.drag);
 
     force.on("tick", function(){
       link.attr("x1", function(d) { return d.source.x; })
