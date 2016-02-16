@@ -64,7 +64,6 @@ Graph = React.createClass({
             return color(colorNumber);
           })
           .on('mouseenter', function (d) {
-            console.log('mouse entered node of:', d.name);
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
@@ -74,7 +73,6 @@ Graph = React.createClass({
 
           })
           .on('mouseleave', function (d) {
-            console.log('mouse left node of:', d.name);
             div.transition()
                 .duration(500)
                 .style("opacity", 0);

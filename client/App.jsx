@@ -41,5 +41,6 @@ App = React.createClass({
 
   changeSelf (name) {
     this.setState({self: name});
+    $('input:checkbox').removeAttr('checked');
   }
 });
