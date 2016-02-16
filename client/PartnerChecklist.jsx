@@ -1,8 +1,10 @@
 PartnerChecklist = React.createClass({
   handleChange: function (event) {
-    console.log("event.target.value", event.target.value);
-    Meteor.call("addNode", event.target.value);
-    Meteor.call("addLink", this.props.me, event.target.value);
+    // only perform an action if the change was going from unchecked to checked
+    if (event.target.checked) {
+      Meteor.call("addNode", event.target.value);
+      Meteor.call("addLink", this.props.me, event.target.value);
+    }
   },
   render: function () {
     return (
