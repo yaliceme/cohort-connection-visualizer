@@ -25,12 +25,12 @@ App = React.createClass({
       </div>
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
+          <div className="col-md-3">
             <MeSelector changeSelf={this.changeSelf}/>
             <PartnerChecklist me={this.state.self}/>
           </div>
-          <div className="col-md-offset-2 col-md-6">
-            <Graph data={this.data.nodes} width="480" height="320"/>
+          <div className="col-md-7">
+            <Graph data={this.data.nodes} width="720" height="540"/>
           </div>
         </div>
       </div>
