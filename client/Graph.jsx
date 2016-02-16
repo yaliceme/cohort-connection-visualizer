@@ -57,15 +57,15 @@ Graph = React.createClass({
                 // })
                 .on('mouseenter', function (d) {
                   console.log('mouse entered node of:', d.name);
-                  console.log('this:', this);
-                  this.innerHTML = d.name;
+                  props.changeHighlighted(d.name);
+
                 })
                 .on('mouseleave', function (d) {
                   console.log('mouse left node of:', d.name);
-                  this.innerHTML = "";
+                  props.changeHighlighted("");
                 })
                 .call(force.drag);
-    $('.node').tooltip();
+    // $('.node').tooltip();
 
     force.on("tick", function(){
       link.attr("x1", function(d) { return d.source.x; })

@@ -2,7 +2,7 @@ App = React.createClass({
   getInitialState () {
     return {
       self: null,
-      highlighted: "cow"
+      highlighted: ""
     };
   },
 
@@ -21,10 +21,10 @@ App = React.createClass({
         <div className="page-header">
           <center>
             <h1>
-            <i className="fa fa-beer"></i> Connection <small> Visualizer</small>
+              <i className="fa fa-beer"></i> Connection <small> Visualizer</small>
             </h1>
             <h3>
-            Selected: {this.state.highlighted}
+              Hovering over: {this.state.highlighted}
             </h3>
           </center>
       </div>
