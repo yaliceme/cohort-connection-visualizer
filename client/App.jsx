@@ -1,13 +1,19 @@
 App = React.createClass({
+  getInitialState () {
+    return {
+      self: null
+    };
+  },
+
   mixins: [ReactMeteorData],
 
-  getMeteorData() {
+  getMeteorData () {
     return {
       nodes: Nodes.find({}).fetch()
     }
   },
 
-  render: function () {
+  render () {
     return (
       <div>
         <div className="page-header">
@@ -20,7 +26,7 @@ App = React.createClass({
       <div className="container">
         <div className="row">
           <div className="col-md-4">
-            <MeSelector />
+            <MeSelector changeSelf={this.changeSelf}/>
           </div>
           <div className="col-md-offset-2 col-md-6">
           </div>
@@ -28,5 +34,9 @@ App = React.createClass({
       </div>
       </div>
     );
+  },
+
+  changeSelf (name) {
+    this.setState({self: name});
   }
 });

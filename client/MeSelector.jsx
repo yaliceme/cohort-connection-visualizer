@@ -2,6 +2,7 @@ MeSelector = React.createClass({
   handleChange: function (event) {
     event.preventDefault();
     var name = event.target.value;
+    this.props.changeSelf(name);
     Meteor.call("addNode", name, []);
   },
   render: function () {
