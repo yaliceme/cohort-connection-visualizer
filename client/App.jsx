@@ -9,7 +9,8 @@ App = React.createClass({
 
   getMeteorData () {
     return {
-      nodes: Nodes.find({}).fetch()
+      nodes: Nodes.find({}).fetch(),
+      links: Links.find({}).fetch()
     }
   },
 
@@ -30,7 +31,7 @@ App = React.createClass({
             <PartnerChecklist me={this.state.self}/>
           </div>
           <div className="col-md-7">
-            <Graph data={this.data.nodes} width="720" height="540"/>
+            <Graph data={this.data} width={720} height={540}/>
           </div>
         </div>
       </div>

@@ -5,7 +5,8 @@ Graph = React.createClass({
               .append("svg")
               .attr("width", this.props.width)
               .attr("height", this.props.height)
-              .style("background-color", "teal");
+    // console.log("this.props", this.props);
+    this.updateGraph(this.props);
   },
 
   componentWillUpdate: function (nextProps) {
@@ -30,7 +31,33 @@ Graph = React.createClass({
     var force = d3.layout.force()
                 .charge(-120)
                 .linkDistance(30)
-                .size([props.width, props.height]);
+                .size([props.width, props.height])
+                .nodes(props.data.nodes)
+                .links(props.data.links);
+
+    var svg = d3.select("svg");
+
+    var link = svg.selectAll('.link')
+                .data(props.data.links)
+                .enter().append('line')
+                .attr('class', 'link');
+
+    var node = svg.selectAll('.node')
+                .data(props.data.nodes)
+                .enter().append('circle')
+                .attr('class', 'node');
+
+    force.on("tick", function(){
+      link.attr("x1", function(d) { return d.source.x; })
+          .attr("y1", function(d) { return d.source.y; })
+          .attr("x2", function(d) { return d.target.x; })
+          .attr("y2", function(d) { return d.target.y; });
+
+      node.attr("cx", function(d) { return d.x; })
+          .attr("cy", function(d) { return d.y; });
+    });
+
+    force.start();
 
   }
 });
