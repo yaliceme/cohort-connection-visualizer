@@ -21,3 +21,5 @@ PartnerChecklist = React.createClass({
     );
   }
 });
+
+//TODO: make it so that unchecking a box removes that connection. Right now a change event fires regardless of whether it was checking or unchecking, can't distinguish which one it was.

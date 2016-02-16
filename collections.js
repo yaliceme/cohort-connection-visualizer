@@ -16,3 +16,5 @@ Meteor.methods({
     Nodes.update({name: name}, {$pull: {partnerNames: partnerName}});
   }
 });
+
+//TODO: make it so that addConnection only adds if connection didn't previously exist. Alternatively, replace addConnection and removeConnection with toggleConnection
