@@ -3,6 +3,7 @@ Nodes = new Mongo.Collection("Nodes");
 Meteor.methods({
   "addNode": function (name, partnerNames) {
     if (Nodes.findOne({name: name}) === undefined) {
+      partnerNames = partnerNames || [];
       return Nodes.insert({name: name, partnerNames: partnerNames});
     }
   },

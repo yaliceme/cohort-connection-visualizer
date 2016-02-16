@@ -8,10 +8,14 @@ Graph = React.createClass({
               .style("background-color", "teal")
     // console.log("this.props:", this.props);
     this.updateGraph(this.props);
+    // var map = this.buildMap(this.props.data);
+    // setTimeout(function(){
+    //   console.log("map:", map);
+    // }, 500);
   },
 
   componentWillUpdate: function (nextProps) {
-    this.updateChart(nextProps);
+    this.updateGraph(nextProps);
   },
 
   getDefaultProps: function () {
@@ -25,6 +29,14 @@ Graph = React.createClass({
     return (
       <div className="graph"></div>
     );
+  },
+
+  buildMap: function (nodesArray) {
+    var map = {};
+    for (var i = 0; i < nodesArray.length; i++) {
+      map[nodesArray[i].name] = i;
+    }
+    return map;
   },
 
   updateGraph: function (props) {
