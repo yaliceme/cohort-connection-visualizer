@@ -24,6 +24,12 @@ Meteor.methods({
       {source: targetIndex, target:sourceIndex}]}) === undefined) {
       Links.insert({source: sourceIndex, target: targetIndex});
     }
+  },
+  "clearAll": function () {
+    Nodes.remove({});
+    Links.remove({});
+    Counters.remove({});
+    Counters.insert({seq: 0});
   }
 
   // "removeNode": function (name) {

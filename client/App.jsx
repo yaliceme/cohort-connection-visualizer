@@ -22,6 +22,7 @@ App = React.createClass({
             <h1>
               <i className="fa fa-beer"></i> Connection <small> Visualizer</small>
             </h1>
+            <button onClick={this.clearAll}>Clear all</button>
           </center>
       </div>
       <div className="container">
@@ -42,5 +43,9 @@ App = React.createClass({
   changeSelf (name) {
     this.setState({self: name});
     $('input:checkbox').removeAttr('checked');
+  },
+
+  clearAll () {
+    Meteor.call('clearAll');
   }
 });
