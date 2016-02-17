@@ -2,7 +2,6 @@ PartnerChecklist = React.createClass({
   handleChange: function (event) {
     // only perform an action if the change was going from unchecked to checked
     if (event.target.checked) {
-      Meteor.call("addNode", event.target.value);
       Meteor.call("addLink", this.props.me, event.target.value);
     }
   },
@@ -55,7 +54,6 @@ PartnerChecklist = React.createClass({
     } else {
       return true;
     }
-
   },
   render: function () {
     var currentUser = this.props.data.currentUser;
