@@ -29,7 +29,7 @@ App = React.createClass({
               <PartnerChecklist data={this.data}/>
             </div>
             <div className="col-md-7">
-              <Graph data={this.data} width={720} height={540}/>
+              <Graph data={this.data} width={720} height={825}/>
             </div>
           </div>
         </div>

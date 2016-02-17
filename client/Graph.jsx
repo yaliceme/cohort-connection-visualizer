@@ -15,7 +15,7 @@ Graph = React.createClass({
   getDefaultProps: function () {
     return {
       width: 720,
-      height: 540
+      height: 825
     }
   },
 
