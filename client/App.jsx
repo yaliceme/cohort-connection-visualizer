@@ -26,7 +26,7 @@ App = React.createClass({
             <h1>
               <i className="fa fa-beer"></i> Connection <small> Visualizer</small>
             </h1>
-            <button onClick={this.clearAll}>Clear all</button>
+            <ClearAll clearAll={this.clearAll} data={this.data}/>
           </center>
         </div>
         <div className="container">
