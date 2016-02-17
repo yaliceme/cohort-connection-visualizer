@@ -21,3 +21,5 @@ insecure                # Allow all DB writes from clients (for prototyping)
 react
 d3js:d3
 twbs:bootstrap
+accounts-github
+accounts-ui
