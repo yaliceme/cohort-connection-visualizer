@@ -18,3 +18,7 @@
   border-radius: 8px;
   pointer-events: none;
 }
+.navbar {
+  float: right;
+  margin: 10px;
+}

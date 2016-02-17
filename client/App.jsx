@@ -17,6 +17,9 @@ App = React.createClass({
   render () {
     return (
       <div>
+        <div className="navbar">
+          <AccountsUIWrapper />
+        </div>
         <div className="page-header">
           <center>
             <h1>
