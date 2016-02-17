@@ -67,12 +67,20 @@ Meteor.methods({
       Links.insert({source: sourceIndex, target: targetIndex});
     }
   },
-  "clearAll": function () {
-    Nodes.remove({});
-    Links.remove({});
-    Counters.remove({});
-    Counters.insert({seq: 0});
+  "isInHR39": function (username) {
+    if (HR39.findOne({username: username})) {
+      return true;
+    } else {
+      return false;
+    }
   }
+
+  // "clearAll": function () {
+  //   Nodes.remove({});
+  //   Links.remove({});
+  //   Counters.remove({});
+  //   Counters.insert({seq: 0});
+  // }
 
   // "removeNode": function (name) {
   //   Nodes.remove({name: name});
