@@ -16,7 +16,6 @@ App = React.createClass({
   },
 
   render () {
-    console.log("this.data.currentUser", this.data.currentUser);
     return (
       <div>
         <div className="navbar">
@@ -29,23 +28,18 @@ App = React.createClass({
             </h1>
             <button onClick={this.clearAll}>Clear all</button>
           </center>
-      </div>
-
-
-      <div className="container">
-        <div className="row">
-          <div className="col-md-3">
-            <MeSelector changeSelf={this.changeSelf} data={this.data}/>
-            <PartnerChecklist me={this.state.self}/>
-          </div>
-          <div className="col-md-7">
-            <Graph data={this.data} width={720} height={540} changeHighlighted={this.changeHighlighted}/>
+        </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-3">
+              <MeSelector changeSelf={this.changeSelf} data={this.data}/>
+              <PartnerChecklist data={this.data} me={this.state.self}/>
+            </div>
+            <div className="col-md-7">
+              <Graph data={this.data} width={720} height={540} changeHighlighted={this.changeHighlighted}/>
+            </div>
           </div>
         </div>
-      </div>
-
-
-
       </div>
     );
   },

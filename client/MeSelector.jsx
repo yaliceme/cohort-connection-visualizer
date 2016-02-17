@@ -6,9 +6,7 @@ MeSelector = React.createClass({
     Meteor.call("addNode", name);
   },
   render: function () {
-    console.log("this.props:", this.props);
     if (this.props.data.currentUser) {
-
       return (
         <div className="panel panel-default">
           <div className="panel-heading">
