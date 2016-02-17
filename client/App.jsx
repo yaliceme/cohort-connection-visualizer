@@ -10,11 +10,13 @@ App = React.createClass({
   getMeteorData () {
     return {
       nodes: Nodes.find({}).fetch(),
-      links: Links.find({}).fetch()
+      links: Links.find({}).fetch(),
+      currentUser: Meteor.user()
     }
   },
 
   render () {
+    console.log("this.data.currentUser", this.data.currentUser);
     return (
       <div>
         <div className="navbar">
@@ -28,10 +30,12 @@ App = React.createClass({
             <button onClick={this.clearAll}>Clear all</button>
           </center>
       </div>
+
+
       <div className="container">
         <div className="row">
           <div className="col-md-3">
-            <MeSelector changeSelf={this.changeSelf}/>
+            <MeSelector changeSelf={this.changeSelf} data={this.data}/>
             <PartnerChecklist me={this.state.self}/>
           </div>
           <div className="col-md-7">
@@ -39,6 +43,9 @@ App = React.createClass({
           </div>
         </div>
       </div>
+
+
+
       </div>
     );
   },
