@@ -1,8 +1,6 @@
 Counters = new Mongo.Collection("Counters");
 
-// small bug: the Counters.insert runs every time the server starts
-// but only the first one is incremented/used, so seems ok for now
-if (Counters.findOne() === undefined) {
+if (Counters.findOne({}) === undefined) {
   Counters.insert({seq: 0});
 }
 
