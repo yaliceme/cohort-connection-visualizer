@@ -5,7 +5,6 @@ Graph = React.createClass({
               .append("svg")
               .attr("width", this.props.width)
               .attr("height", this.props.height)
-    // console.log("this.props", this.props);
     this.updateGraph(this.props);
   },
 
@@ -29,20 +28,21 @@ Graph = React.createClass({
   color: d3.scale.category20(),
 
   updateGraph: function (props) {
+    var div = d3.select(this.getDOMNode())
+              .append("div")
+              .attr("class", "tooltip")
+              .style("opacity", 0);
+
     var color = this.color;
+
     var force = d3.layout.force()
-                .charge(-120)
-                .linkDistance(80)
+                .charge(-150)
+                .linkDistance(120)
                 .size([props.width, props.height])
                 .nodes(props.data.nodes)
                 .links(props.data.links);
 
     var svg = d3.select("svg");
-
-    var div = d3.select(this.getDOMNode())
-              .append("div")
-              .attr("class", "tooltip")
-              .style("opacity", 0);
 
     var links = svg.selectAll('.link').data(props.data.links);
 
@@ -93,6 +93,5 @@ Graph = React.createClass({
     });
 
     force.start();
-
   }
 });

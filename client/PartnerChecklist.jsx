@@ -117,8 +117,6 @@ PartnerChecklist = React.createClass({
           </div>
         </div>
       );
-
-
     }
   }
 });

@@ -42,6 +42,7 @@ var nodesToInsert = [
 ];
 
 if (Nodes.findOne({}) === undefined) {
+  Nodes.remove({});
   nodesToInsert.forEach(function(node){
     Nodes.insert(node);
   });
