@@ -6,8 +6,60 @@ PartnerChecklist = React.createClass({
       Meteor.call("addLink", this.props.me, event.target.value);
     }
   },
+  isInHR39: function (currentUser) {
+    if (!currentUser) {
+      return false;
+    }
+    var username = currentUser.services.github.username;
+    var authorizedUsernames = [
+      "abuddiga",
+      "alberthuynh91",
+      "asu91",
+      "alexanthony813",
+      "bignell",
+      "chououtside",
+      "yaliceme",
+      "aarti156",
+      "boyajay",
+      "brianronaghan",
+      "carlosyasu91",
+      "christo4b",
+      "denizmekik",
+      "Rhombus33",
+      "LeeGar",
+      "hamzahc1",
+      "hiteshlala",
+      "jackie77",
+      "jake-shasteen",
+      "jblza",
+      "joeycchin",
+      "kathy-ems",
+      "Aniroel",
+      "leranf",
+      "m6cheung",
+      "oliverbhuang",
+      "pavelmp",
+      "peterlollo",
+      "rsboggs",
+      "RossAD",
+      "sumosam",
+      "SteffenBerlin",
+      "tchamberlain",
+      "tiffeli",
+      "vincentvpham",
+      "xuejinglu",
+      "lindayezou"
+    ];
+    if (authorizedUsernames.indexOf(username) === -1) {
+      return false;
+    } else {
+      return true;
+    }
+
+  },
   render: function () {
-    if (this.props.data.currentUser) {
+    var currentUser = this.props.data.currentUser;
+    if (this.isInHR39(currentUser)) {
       return (
         <div className="panel panel-default">
           <div className="panel-heading">
@@ -60,7 +112,7 @@ PartnerChecklist = React.createClass({
       return (
         <div className="panel panel-default">
           <div className="panel-heading">
-            <h3 className="panel-title">Who were your pairing partners?</h3>
+            <h3 className="panel-title">Log in from an HR39 account to contribute.</h3>
           </div>
           <div className="panel-body">
           </div>
@@ -72,5 +124,4 @@ PartnerChecklist = React.createClass({
   }
 });
 
-//TODO: make it so that unchecking a box removes that connection. Right now a change event fires regardless of whether it was checking or unchecking, can't distinguish which one it was.
-//TODO: make it so that connection adding is mutual
+//TODO: make it so that unchecking a box removes that connection.
