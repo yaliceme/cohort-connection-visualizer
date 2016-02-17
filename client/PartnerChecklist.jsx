@@ -1,8 +1,9 @@
 PartnerChecklist = React.createClass({
   handleChange: function (event) {
-    // only perform an action if the change was going from unchecked to checked
     if (event.target.checked) {
-      Meteor.call("addLink", this.props.me, event.target.value);
+      Meteor.call("addLink", this.props.data.currentUser.services.github.username, event.target.value);
+    } else {
+      Meteor.call("removeLink", this.props.data.currentUser.services.github.username, event.target.value);
     }
   },
   isInHR39: function (currentUser) {
@@ -121,5 +122,3 @@ PartnerChecklist = React.createClass({
     }
   }
 });
-
-//TODO: make it so that unchecking a box removes that connection.

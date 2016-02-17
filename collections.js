@@ -48,8 +48,8 @@ if (Nodes.findOne({}) === undefined) {
 }
 
 Meteor.methods({
-  "addLink": function (sourceName, targetName) {
-    var sourceIndex = Nodes.findOne({name: sourceName}).nodeIndex;
+  "addLink": function (sourceUsername, targetName) {
+    var sourceIndex = Nodes.findOne({username: sourceUsername}).nodeIndex;
     var targetIndex = Nodes.findOne({name: targetName}).nodeIndex;
 
     if (Links.findOne({$or: [
@@ -57,26 +57,10 @@ Meteor.methods({
       {source: targetIndex, target:sourceIndex}]}) === undefined) {
       Links.insert({source: sourceIndex, target: targetIndex});
     }
+  },
+  "removeLink": function (sourceUsername, targetName) {
+    var sourceIndex = Nodes.findOne({username: sourceUsername}).nodeIndex;
+    var targetIndex = Nodes.findOne({name: targetName}).nodeIndex;
+    Links.remove({source: sourceIndex, target: targetIndex});
   }
-
-  // "clearAll": function () {
-  //   Nodes.remove({});
-  //   Links.remove({});
-  //   Counters.remove({});
-  //   Counters.insert({seq: 0});
-  // }
-
-  // "removeNode": function (name) {
-  //   Nodes.remove({name: name});
-  // },
-
-  // "addConnection": function (name, partnerName) {
-  //   Nodes.update({name: name}, {$addToSet: {partnerNames: partnerName}});
-  // }
-  // ,
-  // "removeConnection": function (name, partnerName) {
-  //   Nodes.update({name: name}, {$pull: {partnerNames: partnerName}});
-  // }
 });
-
-//NOTE: got rid of "removeNode" method for now. Cannot remove a node without breaking indexing for Links. Refactor later.
